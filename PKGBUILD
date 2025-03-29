@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver::-2}
   export QMAKE_CXXFLAGS_RELEASE="-O2 -g0 -DNDEBUG"
-  qmake CONFIG+="release without_cups without_ps without_djvu without_synctex with_lto" qpdfview.pro"
+  qmake CONFIG+="release without_cups without_ps without_djvu without_synctex with_lto" qpdfview.pro
   make
 }
 
