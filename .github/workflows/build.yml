@@ -21,10 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Sy --noconfirm base-devel  
+          pacman -Sy --noconfirm libcups libsynctex poppler-qt6 qt6-svg qt6-tools libspectre djvulibre
           useradd build
           chown -R build .
           curl -O https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=qpdfview
-          su build -c 'makepkg -s'
+          su build -c 'makepkg -s --skippgpcheck'
           echo "FILE1=$(realpath *.tar.zst)" >> $GITHUB_ENV
 
           
