@@ -9,8 +9,8 @@ pkgdesc="A tabbed PDF viewer using the poppler library"
 url="https://launchpad.net/${pkgname}"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
-depends=(libcups libsynctex poppler-qt6 qt6-svg)
-makedepends=(qt6-tools libspectre djvulibre)
+depends=( poppler-qt6 qt6-svg)
+makedepends=(qt6-tools)
 optdepends=('libspectre: for PostScript support'
   'djvulibre: for DjVu support')
 source=(${url}/trunk/${pkgver}/+download/${pkgname}-${pkgver::-2}.tar.gz{,.asc})
