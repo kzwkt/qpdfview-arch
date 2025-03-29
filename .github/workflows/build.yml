@@ -24,7 +24,8 @@ jobs:
           useradd build
           chown -R build .
           su build -c 'makepkg -s --skippgpcheck'
-          echo "FILE1=$(realpath *.tar.zst)" >> $GITHUB_ENV
+          upload=$(ls -t *.tar.zst | head -n 1)
+          echo "FILE1=$(realpath "$upload")" >> $GITHUB_ENV
 
           
 
