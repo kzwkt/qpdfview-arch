@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Sy --noconfirm base-devel  
-          pacman -Sy --noconfirm libcups libsynctex poppler-qt6 qt6-svg qt6-tools libspectre djvulibre
+          pacman -Sy --noconfirm   poppler-qt6 qt6-svg qt6-tools 
           useradd build
           chown -R build .
           su build -c 'makepkg -s --skippgpcheck'
