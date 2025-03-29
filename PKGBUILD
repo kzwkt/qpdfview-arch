@@ -18,14 +18,18 @@ sha512sums=('1b6b479bb42f4568c21b5f6cb0c552c4323739ba9fe46cea80cc199f48b0b49a278
   'SKIP')
 validpgpkeys=('1F521FF0F87E9E1CDE46B8A9F4928C4DD24D4DF8') # Adam Reichold <adam.reichold@t-online.de>
 
+prepare() {
+  sed -i 's/CONFIG += c++11/CONFIG += c++17/' ${pkgname}-${pkgver::-2}/qpdfview.pri
+}
+
 build() {
   cd ${pkgname}-${pkgver::-2}
   export QMAKE_CXXFLAGS_RELEASE="-O2 -g0 -DNDEBUG"
-  qmake6 qpdfview.pro
+  qmake CONFIG+="release without_cups without_ps without_djvu without_synctex with_lto" qpdfview.pro"
   make
 }
 
 package() {
   cd ${pkgname}-${pkgver::-2}
-  make INSTALL_ROOT="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
