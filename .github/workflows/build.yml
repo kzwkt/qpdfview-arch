@@ -20,9 +20,10 @@ jobs:
         
       - name: Install dependencies
         run: |
-          pacman -Sy --noconfirm base-devel busybox 
+          pacman -Sy --noconfirm base-devel  
           useradd build
           chown -R build .
+          curl -O https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=qpdfview
           su build -c 'makepkg -s'
           PKGN=$(grep -Po "^pkgname=['\"]?\K[^'\"]+" PKGBUILD)
           echo "PKG=${PKGN}" >> $GITHUB_ENV
