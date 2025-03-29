@@ -20,14 +20,14 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Sy --noconfirm base-devel  
-          pacman -Sy --noconfirm   poppler-qt6 qt6-svg qt6-tools 
+          pacman -Sy --noconfirm  qt6-base poppler-qt6 qt6-svg qt6-tools 
           useradd build
           chown -R build .
           su build -c 'makepkg -s --skippgpcheck'
           upload=$(ls -t *.tar.zst | head -n 1)
           echo "FILE1=$(realpath "$upload")" >> $GITHUB_ENV
 
-          
+        
 
       - name: Create GitHub Release and Upload ZIP
         uses: softprops/action-gh-release@v2
